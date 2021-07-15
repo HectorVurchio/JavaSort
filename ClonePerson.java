@@ -1,10 +1,18 @@
 /**
 * ClonePerson class to demostrate the use of Cloneable Java interface
 * through the usage or Person class.
-* @version 1. 07/15/2021
+* @version 1. 
 * @author  Hector Jose Vurchio Hurtado
+* @since 07/15/2021
 */
 public class ClonePerson{
+	private static void printResults(Person p){
+		String[] s = {"Name: "," Last Name: "," Age: ","Birth Date: "};
+		System.out.println(s[0]+p.getName()+", "+
+						   s[1]+p.getLastName()+", "+
+						   s[2]+p.getAge()+", "+
+						   s[3]+p.getBirthDate());
+	}
 	
 	public static void main(String[] args){
 		Person p1 = new Person("Hector","Vurchio","1979-08-29");
@@ -18,23 +26,24 @@ public class ClonePerson{
 		}catch(CloneNotSupportedException cne){
 			cne.printStackTrace();
 		}
+		System.out.println("Person 1 in original state");
+		ClonePerson.printResults(p1);
+		System.out.println("Person 2 in original state");
+		ClonePerson.printResults(p2);
+		System.out.println("Person 3 in original state");
+		ClonePerson.printResults(p3);
 		System.out.println("Person 4 in original state");
-		System.out.println(p4.getName()+" "+p4.getLastName()+" "+
-							p4.getAge()+" "+p4.getBirthDate()+" ");
+		ClonePerson.printResults(p4);
 		System.out.println("Person 5 copied from person 4");
-		System.out.println(p5.getName()+" "+p5.getLastName()+" "+
-							p5.getAge()+" "+p5.getBirthDate()+" ");
+		ClonePerson.printResults(p5);
 		System.out.println("after change just person 5");
 		p5.setName("Altered");
 		p5.setLastName("No Original");
-		p5.setBirthDate("1970-02-27");
-		System.out.println("Person 4 after alter person 5");
-		System.out.println(p4.getName()+" "+p4.getLastName()+" "+
-									p4.getAge()+" "+p4.getBirthDate());
+		p5.setBirthDate("1970-01-01");
+		System.out.println("Person 4 after altering person 5");
+		ClonePerson.printResults(p4);
 		System.out.println("Person 6 cloned from Person 4 before alteration");
-		System.out.println(p6.getName()+" "+p6.getLastName()+" "+
-									p6.getAge()+" "+p6.getBirthDate());
-		
-		
+		ClonePerson.printResults(p6);
+	
 	}
 }
