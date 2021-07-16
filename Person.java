@@ -19,7 +19,8 @@ public class Person implements Cloneable{
 	private int age;
 	private Date birthDate; 
 	
-	public Person(String name, String lastName,String birthDate){
+	public Person(String name, 
+					String lastName,String birthDate){
 		this.name = name;
 		this.lastName = lastName;
 		setBirthDate(birthDate);
@@ -34,7 +35,9 @@ public class Person implements Cloneable{
 	*/
 	@Override
 	public Person clone() throws CloneNotSupportedException{
-		return (Person)super.clone();
+		Person cloned = (Person)super.clone();
+		cloned.birthDate = (Date)birthDate.clone();
+		return cloned;
 	}
 	
 	public void setName(String name){

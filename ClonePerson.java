@@ -22,7 +22,7 @@ public class ClonePerson{
 		Person p6 = null;
 		Person p5 = p4;
 		try{
-			p6 = (Person)p5.clone();
+			p6 = (Person)p4.clone();
 		}catch(CloneNotSupportedException cne){
 			cne.printStackTrace();
 		}
